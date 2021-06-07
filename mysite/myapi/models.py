@@ -16,10 +16,11 @@ class Trucks(models.Model):
     registrationDate = models.CharField(max_length=60)
     installationtype = models.CharField(max_length=60)
     registrationBy = models.CharField(max_length=60)
-    def __str__(self):
-        return self.name
 
-#   'vehicleNumber', 'vehicleStatus', 'vehicleGroup', 'totalPermits', 'ownerPhone', 'licenseStart', 'licenseEnd', 'licenseStatus', 'capacity', 'vehicleType', 'gpsIMEI', 'telecomProvider', 'simNo', 'registrationDate', 'installationtype', 'registrationBy' 
+   
+    class Meta:
+        db_table = "myapi_trucks"
+
 
 class Permit(models.Model):
     PermitNumber = models.CharField(max_length=60)	
@@ -31,7 +32,14 @@ class Permit(models.Model):
     Destination = models.CharField(max_length=60)	
     Qty = models.CharField(max_length=60)	
     Alerts = models.CharField(max_length=60)
-    def __str__(self):
-        return self.name
+   
+    class Meta:
+        db_table = "myapi_permit"
 
-#  'PermitNumber', 'ILMS_number', 'VehicleNumber', 'PermitStart', 'PermitValidTill', 'LoadingLocation', 'Destination', 'Qty', 'Alerts'
+class User(models.Model):
+    name =  models.CharField(max_length=60)
+    email =  models.CharField(max_length=60)
+    phonenumber =  models.CharField(max_length=60)
+
+    class Meta:
+        db_table = "myapi_user"

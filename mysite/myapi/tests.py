@@ -1,5 +1,5 @@
 from django.test import TestCase
-from ..models import Trucks
+from ..models import Trucks, Permit
 # Create your tests here.
 
 class TrucksTest(TestCase):
@@ -27,3 +27,22 @@ class TrucksTest(TestCase):
         trucks_tipper = Trucks.objects.get(vehicleType='Tipper')
         self.assertEqual(
             trucks_tipper.get_Type(), "It is a Tipper truck")
+
+class PermitTest(TestCase):
+    def setUp(self):
+        Permit.object.create(
+            PermitNumber = 'GBL567572',
+    ILMS_number = '60333029',
+    VehicleNumber = 'KA58B9742',
+    PermitStart = '09-02-2021 08:12',
+    PermitValidTill = '09-02-2021 16:55',
+    LoadingLocation = 'OMSSMP',
+    Destination = 'Kanakapura',
+    Qty = '12.3',
+    Alerts = '1',
+        )
+    
+    def permitTruck(self):
+        permit_destination = Permit.objects.get(Destination='Kanakapura')
+        self.assertEqual(
+            permit_destination.get_destination(), "Destination is Kanakapura")
